@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAENCOR | Premium Color Cosmetic Intermediates</title>
+    <style>
+        :root {
+            --primary: #4A0E17; 
+            --secondary: #D4AF37; 
+            --dark: #222222;
+            --light: #FDFBF9;
+            --gray: #F4F4F4;
+            --text: #444444;
+            --border: #dddddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo-container img {
+            height: 60px; 
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(74, 14, 23, 0.8), rgba(74, 14, 23, 0.9)), url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&auto=format&fit=crop') center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #c5a030;
+        }
+
+        /* Core Sections */
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Category Banner Styling */
+        .category-banner {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .category-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+        }
+
+        .category-title-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* Product Matrix Table Styling */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .product-table th {
+            background-color: var(--primary);
+            color: white;
+            font-size: 16px;
+            padding: 14px 20px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+        }
+
+        .product-table th.col-name { width: 35%; }
+        .product-table th.col-code { width: 25%; }
+        .product-table th.col-features { width: 40%; }
+
+        .product-table td {
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            vertical-align: middle;
+            background-color: white;
+            font-size: 14px;
+        }
+
+        .product-table tr:nth-child(even) td {
+            background-color: #fafafa;
+        }
+
+        .product-name-cell {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .product-code-cell {
+            font-family: 'Courier New', Courier, monospace;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        /* Process Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: var(--gray);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary);
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .footer-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="#"><img src="LAENCOR logo.jpg" alt="LAENCOR LOGO" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span style="display:none; font-weight:bold; font-size:24px; color:var(--primary);">LAENCOR</span></a>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#process">Our Process</a>
+                <a href="#sample">Request Sample</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Reproducible Quality for Color Cosmetics</h1>
+        <p>Based in India, LAENCOR manufactures premium intermediates for lipsticks, nail polishes, and foundations and creams using high-quality standard raw materials.</p>
+        <a href="#sample" class="btn">Request Free Lab Sample</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Why Global Brands Bank On Us</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto; font-size: 18px;">
+            At LAENCOR, our business is built on trust and precision. The majority of our critical raw materials are imported and manufactured by world-renowned multinational companies. Every LAENCOR product is carefully developed using specialized formulations that have been thoroughly tested and refined. Our manufacturing process is governed by strict process controls and continuous in-process testing to ensure precision at every stage. This disciplined approach allows us to consistently reproduce high-quality products with reliability and uniformity, meeting the highest standards expected in the cosmetics industry.
+        </p>
+    </section>
+
+    <section id="products" class="section" style="background-color: var(--gray);">
+        <h2 class="section-title">Our Product Portfolio</h2>
+        
+        <div class="category-banner" style="background-image: url('ChatGPT Image Jul 20, 2026, 01_05_37 PM.png'); background-size: contain; background-repeat: no-repeat; background-color: #ede2d5;">
+            <div class="category-title-overlay">Lipsticks</div>
+        </div>
+        <div class="table-container">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th class="col-name">Product Name</th>
+                        <th class="col-code">Code No.</th>
+                        <th class="col-features">Formulation Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name-cell">IDD GEL</td>
+                        <td class="product-code-cell">TX-7011</td>
+                        <td>Volatile intermediate for quick-setting, transfer-resistant carrier dispersion.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">CCTG GEL</td>
+                        <td class="product-code-cell">TX-8011</td>
+                        <td>Provides moisturizing emollience with a high-gloss, smooth finished intermediate texture.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-banner" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&auto=format&fit=crop');">
+            <div class="category-title-overlay">Nail Polishes</div>
+        </div>
+        <div class="table-container">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th class="col-name">Product Name</th>
+                        <th class="col-code">Code No.</th>
+                        <th class="col-features">Formulation Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name-cell">ULTRA GEL</td>
+                        <td class="product-code-cell">TX-2055</td>
+                        <td>Ultimate transparency, high chip resistance, and flawless self-leveling intermediate.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">TF GEL</td>
+                        <td class="product-code-cell">TX-5055</td>
+                        <td>Base for classic cream finishes, providing superior adhesion and depth.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">TOP COAT</td>
+                        <td class="product-code-cell">NA</td>
+                        <td>Ultra-high-gloss intermediate for final coat applications, creating a diamond-hard shine.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">PREMIUM BASE</td>
+                        <td class="product-code-cell">TX-3011</td>
+                        <td>Silk-touch base intermediate with a flawlessly blendable texture and buildable coverage.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">TF BASE</td>
+                        <td class="product-code-cell">TX-5011</td>
+                        <td>Matte-suspension base intermediate, optimized for oil control and minimizing pores.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">GLITTER BASE</td>
+                        <td class="product-code-cell">TX-6011</td>
+                        <td>Illuminating intermediate designed to suspend special effect pigments without clumping.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">VELVETTE MATTE BASE</td>
+                        <td class="product-code-cell">TX-4011</td>
+                        <td>High-pigment load carrier base, delivering an airbrushed, soft-focus velvet finish.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-banner" style="background-image: url('https://images.unsplash.com/photo-1515688594390-b649af70d282?w=1200&auto=format&fit=crop');">
+            <div class="category-title-overlay">Foundations and Creams</div>
+        </div>
+        <div class="table-container">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th class="col-name">Product Name</th>
+                        <th class="col-code">Code No.</th>
+                        <th class="col-features">Formulation Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-name-cell">IDD GEL</td>
+                        <td class="product-code-cell">TX-7011</td>
+                        <td>Volatile intermediate for quick-setting, transfer-resistant carrier dispersion.</td>
+                    </tr>
+                    <tr>
+                        <td class="product-name-cell">CCTG GEL</td>
+                        <td class="product-code-cell">TX-8011</td>
+                        <td>Provides moisturizing emollience with a high-gloss, smooth finished intermediate texture.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <section id="process" class="section">
+        <h2 class="section-title">Our Manufacturing & Quality Process</h2>
+        <div class="steps">
+            <div class="step-card">
+                <h3>1. Processing & Blending</h3>
+                <p>Raw materials undergo meticulous mixing, blending, and advanced particle size reduction to ensure a perfectly smooth finish.</p>
+            </div>
+            <div class="step-card">
+                <h3>2. Strict Quality Control</h3>
+                <p>We execute rigorous testing at three distinct phases: incoming raw materials, in-process testing, and finished product analysis.</p>
+            </div>
+            <div class="step-card">
+                <h3>3. Testing & Documentation</h3>
+                <p>Every single batch is supplied with comprehensive Test Reports and a formal Certificate of Analysis (COA) for total assurance.</p>
+            </div>
+            <div class="step-card">
+                <h3>4. Counter Samples</h3>
+                <p>We retain physical counter samples of every manufactured batch for continuous, periodic evaluation to handle market feedback immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sample" class="section" style="background-color: var(--gray);">
+        <h2 class="section-title">Request a Free Lab Trial Sample</h2>
+        <p style="text-align: center; margin-bottom: 30px;">
+            We provide free samples for your lab trials and support you in standardizing your final finished product recipe.
+        </p>
+        
+        <div class="form-container">
+            <form id="sampleForm" onsubmit="handleSampleSubmit(event)">
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" required placeholder="Your Company Ltd.">
+                </div>
+                <div class="form-group">
+                    <label for="email">Contact Email</label>
+                    <input type="email" id="email" required placeholder="name@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="productOfInterest">Product Needed For</label>
+                    <select id="productOfInterest" required>
+                        <option value="">-- Select Product Category --</option>
+                        <option value="Lipsticks">Lipsticks</option>
+                        <option value="Nail Polishes">Nail Polishes</option>
+                        <option value="Foundations and Creams">Foundations and Creams</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Lab Trial Requirements / Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Tell us about your finished product specifications..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Request Sample</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <h2>LAENCOR</h2>
+            <p>Manufacturer of High-Quality Cosmetic Intermediates</p>
+            <p>Location: India</p>
+            <br>
+            <p><strong>Contact Email:</strong> <a href="mailto:laencor@gmail.com">laencor@gmail.com</a></p>
+        </div>
+        <hr style="border-color: #444; margin: 20px 0;">
+        <p style="font-size: 12px; color: #aaa;">&copy; 2026 LAENCOR. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function handleSampleSubmit(event) {
+            event.preventDefault();
+            const company = document.getElementById('company').value;
+            const product = document.getElementById('productOfInterest').value;
+            alert(`Thank you! Your sample request for "${product}" has been submitted successfully for ${company}. Our lab team will arrange the sample shipment and Certificate of Analysis.`);
+            document.getElementById('sampleForm').reset();
+        }
+    </script>
+</body>
+</html>
